@@ -68,7 +68,7 @@ $(function() {
                  expect($('body').hasClass('menu-hidden')).toBeTruthy();
               });
          
-          });
+          
          /* This is a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
@@ -80,7 +80,8 @@ $(function() {
                 $('.menu-icon-link').trigger('click');
                 expect($('body').hasClass('menu-hidden')).toBeTruthy();
          
-     });
+               });
+           });
     /* This is a new test suite named "Initial Entries" containing
      * all tests related to the number of entries in the feed from the API call
      */
@@ -119,9 +120,11 @@ $(function() {
          describe('New Feed Selection',function(){
             var currentFeed;
             beforeEach(function(done){
+                loadFeed(0,function(){
                 currentFeed = $('.feed').html();
                 loadFeed(1,function(){
-                    done();
+                       done();
+                    });
                 });
             });
             it('All contents of the feed container should be changed',function(done){
